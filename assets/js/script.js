@@ -13,7 +13,7 @@ async function getUser(username) {
     usuario = await request(username);
 
     $("#resultadosLeft").html(`
-    <div clas="col-6 text-left">
+    <div class="text-left">
         <h1>Datos del Usuario</h1>
         <img src="${usuario.avatar_url}" alt="avatar" class="img-fluid w-50">
         <p>Nombre de usuario: ${usuario.name}<p>
@@ -29,11 +29,17 @@ async function getRepo(username, page, perpage) {
         const repos = await request(`${username}/repos`);
         const link = `https://github.com/${username}/`
 
+        $("#linkrep").html('')
         for (rep of repos){
             let enlace = link.concat(rep);
-            $("#resultadosRight").append(`            
-            <div clas="col-6 text-right"> 
-                <a href="${enlace}" target="_blank">${rep.name}</a>
+            $("#resultadosRight").html(`
+            <div class="text-right"> 
+                <h1>Datos de Repositorios</h1>                
+            </div>
+            `)
+            $("#linkrep").append(`            
+            <div class="text-right"> 
+                <a href="${rep.html_url}" target="_blank">${rep.name}</a>
             </div>
             `)
         }
