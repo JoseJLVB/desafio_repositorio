@@ -43,7 +43,6 @@ async function getRepo(username, page, perpage) {
             </div>
             `)
         }
-   
     console.log(repos)
 };
 
